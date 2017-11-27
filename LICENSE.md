@@ -1,5 +1,5 @@
 Note: This License applies for the entire Repository *except* the file `resources/logo.png`, which's base shape is courtesy of Discord.
-Also, `build.gradle` was originally written by the Minecraft Forge time. I guess they don't care much about a single file, but Credit where credit is due.
+Also, `build.gradle` was originally written by the Minecraft Forge team. I guess they don't care much about a single file, but Credit where credit is due.
 
 
 Don't Be a Jerk: The Open Source Software License.
