@@ -1,0 +1,16 @@
+[
+{
+  "modid": "minecraftrpc",
+  "name": "Minecraft-RPC",
+  "description": "Enables Discord's Rich Presence for Minecraft.",
+  "version": "1.0",
+  "mcversion": "1.12.2",
+  "url": "https://minecraft.curseforge.com/projects/minecraft-rpc",
+  "updateUrl": "https://minecraft.curseforge.com/projects/minecraft-rpc/files",
+  "authorList": ["MCOfficer"],
+  "credits": "AlmightyAlpaca, for the IntelliJ-RPC plugin",
+  "logoFile": "logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
