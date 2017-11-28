@@ -16,7 +16,7 @@ public class MinecraftRPC {
     public static final String version = "1.0.0";
 
     public EventHandler eventHandler = new EventHandler(this);
-    public RPCClient rpcClient = new RPCClient();
+    public RPCClient rpcClient;
     public ConfigHandler configHandler;
 
     @SidedProxy(serverSide = "me.mcofficer.minecraftrpc.proxy.CommonProxy", clientSide = "me.mcofficer.minecraftrpc.proxy.ClientProxy")
@@ -28,11 +28,13 @@ public class MinecraftRPC {
     @Mod.EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {
         configHandler = new ConfigHandler(new Configuration(event.getSuggestedConfigurationFile()));
+        configHandler.syncConfig();
     }
 
     @Mod.EventHandler
     public void onInit(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(eventHandler);
+        this.rpcClient = new RPCClient(configHandler.clientID);
         proxy.rpcinit(this);
     }
 
@@ -40,9 +42,4 @@ public class MinecraftRPC {
     public void onPostInitEvent(FMLPostInitializationEvent event) {
         proxy.rpcupdate(this, "in Main Menu", configHandler);
     }
-
-    public static void syncConfig() {
-
-    }
-
 }

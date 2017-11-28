@@ -8,7 +8,11 @@ import javax.annotation.Nullable;
 
 public class RPCClient {
 
-    public static final String CLIENT_ID = "384232743162216448";
+    public String CLIENT_ID;
+
+    public RPCClient (String clientId){
+        this.CLIENT_ID = clientId;
+    }
 
     private static Thread callbackRunner;
 
@@ -40,9 +44,9 @@ public class RPCClient {
     {
         DiscordRichPresence presence = new DiscordRichPresence();
         presence.largeImageKey = configHandler.largeImageKey;
-        presence.largeImageText = "Minecraft";
+        presence.largeImageText = configHandler.largeImageText;
         presence.smallImageKey = configHandler.smallImageKey;
-        presence.smallImageText = "Minecraft";
+        presence.smallImageText = configHandler.smallImageText;
         if (details != null){
             presence.details = details;
             presence.startTimestamp = System.currentTimeMillis() / 1000;

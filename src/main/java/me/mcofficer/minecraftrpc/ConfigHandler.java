@@ -12,6 +12,7 @@ public class ConfigHandler {
     public String largeImageText = "Minecraft";
     public String smallImageKey = "minecraft";
     public String smallImageText = "Minecraft";
+    public String clientID = "384232743162216448";
 
     public ConfigHandler(Configuration config) {
         this.config = config;
@@ -37,19 +38,22 @@ public class ConfigHandler {
                     "smallImageText",
                     "Minecraft",
                     "The text displayed when hovering over the small image");
+            Property clientIDProp = config.get(Configuration.CATEGORY_GENERAL,
+                    "clientID",
+                    "384232743162216448",
+                    "The client id retrieved from https://discordapp.com/developers/applications/me");
 
             largeImageKey = largeImageKeyProp.getString();
             largeImageText = lateImageTextProp.getString();
             smallImageKey = smallImageKeyProp.getString();
             smallImageText = smallImageTextProp.getString();
+            clientID = clientIDProp.getString();
+
+            config.save();
         }
         catch (Exception e) {
             System.out.println("Error loading Config - Falling back to default values:");
             e.printStackTrace(System.out);
-        }
-        finally {
-            if (config.hasChanged() || config.)
-                config.save();
         }
     }
 }
