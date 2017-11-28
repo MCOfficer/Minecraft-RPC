@@ -25,14 +25,13 @@ public class MinecraftRPC {
     public static MinecraftRPC instance;
 
     @Mod.EventHandler
-    public void onPreInitEvent(FMLPreInitializationEvent event) {
-        System.out.println(name + " is loading!");
+    public void onInit(FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(eventHandler);
+        proxy.rpcinit(this);
     }
 
     @Mod.EventHandler
     public void onPostInitEvent(FMLPostInitializationEvent event) {
-        proxy.rpcinit(this);
         proxy.rpcupdate(this, "in Main Menu");
     }
 
