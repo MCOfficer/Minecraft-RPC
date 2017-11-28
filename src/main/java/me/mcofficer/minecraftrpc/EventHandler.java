@@ -14,9 +14,15 @@ public class EventHandler {
     @SubscribeEvent
     public void onClientConnectedToServerEvent(FMLNetworkEvent.ClientConnectedToServerEvent event) {
         if (event.isLocal())
+        master
+            main.proxy.rpcupdate(main, "Singleplayer");
+        else
+            main.proxy.rpcupdate(main, "Multiplayer");
+=======
             main.proxy.rpcupdate(main, "Single Player", main.configHandler);
         else
             main.proxy.rpcupdate(main, "Multi Player", main.configHandler);
+        master
     }
 
 }
