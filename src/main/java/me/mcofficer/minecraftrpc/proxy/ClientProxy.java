@@ -1,5 +1,6 @@
 package me.mcofficer.minecraftrpc.proxy;
 
+import me.mcofficer.minecraftrpc.ConfigHandler;
 import me.mcofficer.minecraftrpc.MinecraftRPC;
 
 public class ClientProxy extends CommonProxy{
@@ -8,9 +9,8 @@ public class ClientProxy extends CommonProxy{
         main.rpcClient.init();
     }
 
-    public void rpcupdate(MinecraftRPC main, String details) {
-        main.rpcClient.updatePresence(details);
+    public void rpcupdate(MinecraftRPC main, String details, ConfigHandler configHandler) {
+        main.rpcClient.updatePresence(details, configHandler);
     }
-
 
 }

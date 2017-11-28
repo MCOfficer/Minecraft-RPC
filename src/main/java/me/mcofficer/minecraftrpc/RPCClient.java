@@ -32,16 +32,16 @@ public class RPCClient {
             callbackRunner.start();
         }
 
-        System.out.println("[Minecraft-RPC:] RPCClient has been started.");
+        System.out.println("RPCClient has been started.");
 
     }
 
-    public void updatePresence(@Nullable String details)
+    public void updatePresence(@Nullable String details, ConfigHandler configHandler)
     {
         DiscordRichPresence presence = new DiscordRichPresence();
-        presence.largeImageKey = "minecraft";
+        presence.largeImageKey = configHandler.largeImageKey;
         presence.largeImageText = "Minecraft";
-        presence.smallImageKey = "minecraft";
+        presence.smallImageKey = configHandler.smallImageKey;
         presence.smallImageText = "Minecraft";
         if (details != null){
             presence.details = details;

@@ -2,6 +2,7 @@ package me.mcofficer.minecraftrpc;
 
 import me.mcofficer.minecraftrpc.proxy.CommonProxy;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
@@ -15,14 +16,19 @@ public class MinecraftRPC {
     public static final String version = "1.0.0";
 
     public EventHandler eventHandler = new EventHandler(this);
-
     public RPCClient rpcClient = new RPCClient();
+    public ConfigHandler configHandler;
 
     @SidedProxy(serverSide = "me.mcofficer.minecraftrpc.proxy.CommonProxy", clientSide = "me.mcofficer.minecraftrpc.proxy.ClientProxy")
     public static CommonProxy proxy;
 
     @Mod.Instance(modId)
     public static MinecraftRPC instance;
+
+    @Mod.EventHandler
+    public void onPreInit(FMLPreInitializationEvent event) {
+        configHandler = new ConfigHandler(new Configuration(event.getSuggestedConfigurationFile()));
+    }
 
     @Mod.EventHandler
     public void onInit(FMLInitializationEvent event) {
@@ -32,7 +38,11 @@ public class MinecraftRPC {
 
     @Mod.EventHandler
     public void onPostInitEvent(FMLPostInitializationEvent event) {
-        proxy.rpcupdate(this, "in Main Menu");
+        proxy.rpcupdate(this, "in Main Menu", configHandler);
+    }
+
+    public static void syncConfig() {
+
     }
 
 }
